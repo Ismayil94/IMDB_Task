@@ -2,6 +2,7 @@
 from utils import get_data, get_year
 
 import unittest
+import os
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,7 +22,11 @@ class SortingButtonTest(unittest.TestCase):
 
     def setUp(self):
         self.url = 'https://www.imdb.com/chart/top?ref_=nv_mv_250_6'
-        self.driver = webdriver.Firefox()
+        caps = {'browserName': os.getenv('BROWSER', 'chrome')}
+        self.driver = webdriver.Remote(
+            command_executor='http://localhost:4444/wd/hub',
+            desired_capabilities=caps
+        )
 
     def test_sorting_button_click(self):
         self.driver.get(self.url)
@@ -56,7 +61,12 @@ class SmokeTestSearch(unittest.TestCase):
 
     def setUp(self):
         self.url = 'https://www.imdb.com/chart/top?ref_=nv_mv_250_6'
-        self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Firefox()
+        caps = {'browserName': os.getenv('BROWSER', 'chrome')}
+        self.driver = webdriver.Remote(
+            command_executor='http://localhost:4444/wd/hub',
+            desired_capabilities=caps
+        )
 
     def test_smoke_search(self):
         self.driver.get(self.url)

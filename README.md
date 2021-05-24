@@ -4,13 +4,21 @@ Following dependencies are needed:
 
 - BeautifulSoup4 library
 - Selenium library
-- Geckodriver file
+- Docker
 
-Instructions to run the tests:
-* Run pip install bs4
-* Run pip install -U selenium
-* Download Geckodriver from https://github.com/mozilla/geckodriver/releases
-* Add Geckodriver to PATH in Linux or Mac OS it is done by export PATH=$PATH:/path/to/geckodriver
-* Add Geckodriver to PATH in Windows  https://medium.com/ananoterminal/install-selenium-on-windows-f4b6bc6747e4
-* Add read write execute permissions to Geckodriver chmod -R 777 Geckodriver or from file properties in Windows
-* After performing steps above you can run imdb sorting and ui tests by running representing .py files
+Instructions:
+ - On Ubuntu/Mac:
+    1. `python3 -m venv venv` or `python -m venv venv`
+    2. `source venv/bin/activate`
+    3. `pip3 install -r requirements`
+    4. `docker-compose up`
+    5. `python3 imdb_sorting_tests`
+       `python3 imdb_ui_tests`
+ - On Windows:
+    1. `python -m venv venv`
+    2. `source venv/Scripts/activate.bat`
+    3. `pip install -r requirements`
+    4. `docker-compose up`
+    5. `python imdb_sorting_tests`
+       `python imdb_ui_tests`
+    
